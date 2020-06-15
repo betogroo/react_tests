@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="container">
+
+    <h2>Perfil de <%= user.name %></h2>
+    <ul class="list-group">
+        <li class="list-group-item">Data de Nascimento: <%=moment(user.birthDate).format('L')%></li>
+        <li class="list-group-item">Sexo:
+            <% if (user.gender == 'M') { %>
+             MASCULINO
+             <% } else { %>
+                FEMININO
+            <% } %>
+            </li>
+        <li class="list-group-item">Email: <%= user.email%></li>
+        <li class="list-group-item">RG: <%= user.rg%></li>
+        <li class="list-group-item">CPF: <%=cpf.format(user.cpf)%></li>
+        <li class="list-group-item">Nível: <%= user.Role.name%></li>
+    </ul>
+    <small>Usuário cadastrado em <%= moment(user.createdAt).format('LLL') %> e editado em <%= moment(user.updatedAt).format('LLL') %></small>
+    <br>
+    <a class="btn btn-primary btn-sm" href="/users">
+        Voltar
+    </a>
+
+
+
+</div>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,32 @@
+import React, {useState} from 'react';
+import './App.css';
+
+import Header from './Header'
+
+function App() {
+  const  [counter, setCounter] = useState(0)
+  
+  function handleButtonClickPlus(){
+    setCounter(counter + 1)
+    console.log(counter)
+  }
+  function handleButtonClickMinus(){
+    if (counter == 0) {
+      setCounter(0)
+    }else{
+      setCounter(counter - 1)
+    }
+    console.log(counter)
+    
+  }
+
+  return (
+    <div>
+      <Header title= {`Valor: ${counter}`} />
+  <button type="button" onClick={handleButtonClickPlus}>+</button>
+  <button type="button" onClick={handleButtonClickMinus}>-</button>
+    </div>
+  )
+}
+
+export default App;

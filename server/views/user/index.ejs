@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="container">
+
+    <h2>Usuários</h2>
+    <%- include('forms/user-search') %> 
+    <% if (alert.length > 0) { %>
+    <%- alert %>
+    <% } %>
+    
+   
+     
+<% if (users.sname == false) { %>
+ 
+
+    <% if (users.count > 0) { %>
+
+        <%- include('index-table.ejs') %> 
+
+
+
+    <% } else { %>
+
+      
+
+    <h4>Não há usuários cadastrados</h4>
+    <% } %>
+
+    <% } else { %>
+     
+       <% if (users.count > 0) { %>
+        <%- include('index-table.ejs') %> 
+        <% } else { %>
+         <div class="alert alert-danger mt-4">Nenhum resultado para a busca</div>
+       <% } %>
+
+    <% } %>
+</div>
+
+<%- include('../partials/footer.ejs') %>

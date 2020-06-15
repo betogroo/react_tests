@@ -1,0 +1,20 @@
+<form action="/role/update" method="post">
+    <div class="form-group">
+
+        <label for="name">Nome</label>
+        <input type="hidden" name="id" value="<%= role.id%> ">
+        <input type="text" class="form-control" name="name" autocomplete="off" value="<%= role.name %>">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+<script>
+    var slider = document.getElementById("id");
+    var output = document.getElementById("idValue");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+</script>

@@ -1,0 +1,84 @@
+<form action="/user/update" method="post">
+    <input type="hidden" name="id" value="<%= user.id %>">
+    <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" name="name" autocomplete="off" value="<%= user.name %>">
+        <% if (alert.length > 0) { %>
+        <% alert.forEach(e => { %>
+        <% if (e.param == 'name') { %>
+        <%- e.msg %>
+        <% } %>
+        <% }) %>
+        <% } %>
+    </div>
+    <div class="form-group">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary btn-sm">
+                <input type="radio" name="gender" value="M" autocomplete="off" <% if (user.gender == 'M') { %> checked
+                    <% } %>> Masculino
+            </label>
+            <label class="btn btn-primary btn-sm">
+                <input type="radio" name="gender" value="F" autocomplete="off" <% if (user.gender == 'F') { %> checked
+                    <% } %>> Feminino
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="rg">RG</label>
+        <input type="text" class="form-control" name="rg" autocomplete="off" value="<%= user.rg %>" data-js="rg">
+        <% if (alert.length > 0) { %>
+        <% alert.forEach(e => { %>
+        <% if (e.param == 'rg') { %>
+        <%- e.msg %>
+        <% } %>
+        <% }) %>
+        <% } %>
+    </div>
+    <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="text" maxlength="11" class="form-control" name="cpf" value="<%= user.cpf %>" data-js="cpf">
+        <% if (alert.length > 0) { %>
+        <% alert.forEach(e => { %>
+        <% if (e.param == 'cpf') { %>
+        <%- e.msg %>
+        <% } %>
+        <% }) %>
+        <% } %>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" autocomplete="off" value="<%= user.email %>">
+        <% if (alert.length > 0) { %>
+        <% alert.forEach(e => { %>
+        <% if (e.param == 'email') { %>
+        <%- e.msg %>
+        <% } %>
+        <% }) %>
+        <% } %>
+    </div>
+    <div class="form-group">
+        <label for="birthDate">Data de Nascimento</label>
+        <input type="date" class="form-control" name="birthDate" value="<%= user.birthDate %>">
+        <% if (alert.length > 0) { %>
+        <% alert.forEach(e => { %>
+        <% if (e.param == 'birthDate') { %>
+        <%- e.msg %>
+        <% } %>
+        <% }) %>
+        <% } %>
+    </div>
+    <div class="form-group">
+        <label for="idRole">Nível</label>
+
+        <select class="form-control" name="idRole" id="">
+            <option value="<%= user.Role.id %>"><%= user.Role.name %> </option>
+            <% roles.forEach(role => { %>
+            <option value="<%= role.id %>"><%= role.name %> </option>
+            <% }) %>
+        </select>
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

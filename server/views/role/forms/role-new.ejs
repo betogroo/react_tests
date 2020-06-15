@@ -1,0 +1,29 @@
+<form action="/role" method="post">
+    <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" name="name" autocomplete="off">
+    </div>
+
+    <!-- <div class="form-group">
+        <label for="id">Nível</label>
+        <input type="number" class="form-control" min="0" max="100" value="50" step="10" name="id" autocomplete="off">
+
+    </div> -->
+    <div class="form-group">
+        <label for="id">Nível: <span id="idValue"></span></label>
+        <input type="range" min="0" max="100" value="50" step="10" class="form-control-range" id="id" name="id">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+<script>
+    var slider = document.getElementById("id");
+    var output = document.getElementById("idValue");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+</script>

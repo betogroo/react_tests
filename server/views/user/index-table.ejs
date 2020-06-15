@@ -1,0 +1,77 @@
+<table class="table table-sm">
+    <caption><%= `${users.count} usuários cadastrados, divididos em ${users.pages} páginas.` %> </caption>
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Data Nascimento</th>
+            <th scope="col">Email</th>
+            <th scope="col">RG</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Nível</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.rows.forEach(user => { %>
+        <tr>
+            <td><a href="/user/<%=user.id%>"><%=user.name%></a></td>
+            <td><%=user.gender%></td>
+            <td><%=moment(user.birthDate).format('L')%></td>
+            <td><%=user.email%></td>
+            <td><%=user.rg%></td>
+            <td><%=cpf.format(user.cpf)%></td>
+            <td><%=user.Role.name%></td>
+            <td>
+                <form action="/user/delete" method="POST">
+                    <input type="hidden" name="id" value="<%=user.id%>">
+                    <button class="btn btn-sm" type="submit">
+                        <%- include('../partials/icon/icon-trash.ejs') %>
+                    </button>
+
+                    <a class="btn btn-sm" href="/user/edit/<%= user.id%>">
+                        <%- include('../partials/icon/icon-edit.ejs') %>
+                    </a>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+
+    </tbody>
+</table>
+
+<% if (users.pages > 1) { %>
+    <div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item <% if(users.previous<1){ %>disabled<%}%>">
+                        <a class="page-link" href="/users?page=<%=users.previous %><% if (users.sname != '') { %>&sname=<%= users.sname %><% } %>"
+                tabindex="-1" aria-disabled="<% if(users.previous<1){ %>true<%}%>">
+                            <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </li>
+                        <% for( let i = 0; i < users.pages; i++ ) { %>
+                    <li class=" page-item <% if (i+1 == users.page) { %>active<% } %>">
+                <a class="page-link"
+                    href="/users?page=<%=i+1%><% if (users.sname != '') { %>&sname=<%= users.sname %><% } %>"
+                    aria-disabled="<% if (i+1 == users.page) { %>true<%}%>"><%=i+1%></a></li>
+                    <% } %>
+        
+        
+        
+        
+        
+                    <li class=" page-item
+                    <% if(users.next > users.pages){ %>disabled<%}%>">
+                        <a class="page-link" href="/users?page=<%=users.next %><% if (users.sname != '') { %>&sname=<%= users.sname %><% } %>"
+                    tabindex="-1" aria-disabled="<% if(users.next > users.pages){ %>true<%}%>">
+                            <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        <% } %>

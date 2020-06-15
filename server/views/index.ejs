@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs') %>
+
+<% if (userLogged) { %>
+<div class="container">
+    <% if (error != '') { %>
+    <div class="alert alert-danger"><%= error%></div>
+    <% } %>
+
+
+    <div class="list-group mt-2">
+        <a href="/users" class="list-group-item list-group-item-action active">
+            Usuários
+        </a>
+        <a href="/roles" class="list-group-item list-group-item-action">Permissões</a>
+        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+        <a href="/profile" class="list-group-item list-group-item-action">Profile deletar isso aqui</a>
+        <a href="/logout" class="list-group-item list-group-item-action">Sair</a>
+    </div>
+    <hr>
+    <hr>
+    <h1>To do list:</h1>
+    <ul class="list-group mt-4">
+        <li class="list-group-item list-group-item-danger">Confirmar quando deletar</li>
+        <li class="list-group-item list-group-item-danger">Melhorar Paginação para muitos resultados</li>
+        <li class="list-group-item list-group-item-danger">Confirmar quando editar</li>
+        <li class="list-group-item list-group-item-danger">Padronizar alertas</li>
+        <li class="list-group-item list-group-item-success">Buscar Usuário por nome</li>
+        <li class="list-group-item list-group-item-success">Array de Inserções no seed OK</li>
+        <li class="list-group-item list-group-item-success">Erro paginação OK</li>
+    </ul>
+
+    <% } else { %>
+
+    <%- include('partials/login.ejs') %>
+
+    <% } %>
+
+    <%- include('partials/msg.ejs') %>
+</div>
+
+<%- include('partials/footer.ejs') %>
