@@ -48,7 +48,7 @@ function getRandomPeople() {
         "CAIQUE",
         "CAIK",
         "GUSTAVO",
-        "JOÃO","JOÃO","JOÃO","JOÃO","JOÃO","JOÃO","JOÃO",
+        "JOÃO", "JOÃO", "JOÃO", "JOÃO", "JOÃO", "JOÃO", "JOÃO",
         "PAULO",
         "OSVALDO",
         "OLAVO",
@@ -151,9 +151,9 @@ function getRandomPeople() {
         "LUIZ HENRIQUE",
         "JOÃO PAULO",
         "JOSÉ PAULO",
-        "JOSÉ","JOSÉ","JOSÉ","JOSÉ","JOSÉ","JOSÉ","JOSÉ","JOSÉ","JOSÉ","JOSÉ",
+        "JOSÉ", "JOSÉ", "JOSÉ", "JOSÉ", "JOSÉ", "JOSÉ", "JOSÉ", "JOSÉ", "JOSÉ", "JOSÉ",
         "CAUÃ", "RICRDO", "ÍTALO", "IGOR", "BERNARDO",
-        "ARTUR", "ARTHUR", "VÍCTOR", "VÍTOR", "VICTOR HUGO", 
+        "ARTUR", "ARTHUR", "VÍCTOR", "VÍTOR", "VICTOR HUGO",
       ],
 
 
@@ -187,7 +187,7 @@ function getRandomPeople() {
         "ADRIANA",
         "LUANA",
         "LUANDA",
-        "MARIA","MARIA","MARIA","MARIA","MARIA","MARIA","MARIA",
+        "MARIA", "MARIA", "MARIA", "MARIA", "MARIA", "MARIA", "MARIA",
         "ROBERTA",
         "LUISA",
         "LUIZA",
@@ -294,7 +294,7 @@ function getRandomEmail(name) {
 
 var data = []
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 30; i++) {
   var people = getRandomPeople()
   var name = people.fullName
   var email = people.email

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.svg'
-import {FiLogIn} from 'react-icons/fi'
-import {Link} from 'react-router-dom'
+import { FiLogIn } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import axios from 'axios'
 import './styles.css'
@@ -14,7 +14,7 @@ interface User {
     rg: string,
     cpf: string
 }
-interface Pagination{
+interface Pagination {
     totalPages: number,
     nextPageUrl: string,
 }
@@ -26,7 +26,7 @@ interface Pages {
 }
 
 
-const Home = () =>{
+const Home = () => {
 
     //const [items, setItems] = useState<Item[]>([]) ts
     const [users, setUsers] = useState<User[]>([])
@@ -36,10 +36,11 @@ const Home = () =>{
     useEffect(() => {
         api.get('users').then(res => {
             setUsers(res.data.users)
+            setPagination(res.data.pag)
             setPages(res.data.pag.pages)
         })
     }, [])
-    
+
     /* useEffect(() => {
         api.get('users').then(res => {
             setPagination(res.data.pag)
@@ -52,16 +53,16 @@ const Home = () =>{
         })
     }, []) */
 
-    
-   
-       return (
+
+
+    return (
         <div id="page-home">
             <div className="content">
                 <header>
-                    <img src={logo} alt="E Coleta"/>
+                    <img src={logo} alt="E Coleta" />
                 </header>
-               <main>
-               <table className="table table-sm">
+                <main>
+                    <table className="table table-sm">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
@@ -73,42 +74,43 @@ const Home = () =>{
                             </tr>
                         </thead>
                         <tbody>
-                        {users.map(user => (
-                            
-                            <tr key={user.id}>
-                                <th scope="row">{user.id}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.birthDate}</td>
-                                <td>{user.rg}</td>
-                                <td>{user.cpf}</td>
-                            </tr>
-                        )
-                        )
-                        }
-                            
-                        </tbody>
-                        </table>
-                        <nav aria-label="Page navigation example">
-                            <ul className="pagination">
-                                <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                                {
-                                    pages.map(pag =>(
-                                    <li key={pag.pageUrl} className="page-item"><a className="page-link" href={pag.pageUrl}>{pag.page}</a></li>
-                                    ))
-                                }
-                                <li className="page-item"><a className="page-link" href="">Next</a></li>
-                            </ul>
-                        </nav>
+                            {users.map(user => (
 
-                   <Link to="/create-point" className="btn btn-success">
-                       <span>
+                                <tr key={user.id}>
+                                    <th scope="row">{user.id}</th>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.birthDate}</td>
+                                    <td>{user.rg}</td>
+                                    <td>{user.cpf}</td>
+                                </tr>
+                            )
+                            )
+                            }
+
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination">
+
+                            <li className="page-item"><a className="page-link" href="#">Previous</a></li>
+                            {
+                                pages.map(pag => (
+                                    <li key={pag.pageUrl} className="page-item"><a className="page-link" href={pag.pageUrl}>{pag.page}</a></li>
+                                ))
+                            }
+                            <li className="page-item"><a className="page-link" href="">Next</a></li>
+                        </ul>
+                    </nav>
+
+                    <Link to="/create-point" className="btn btn-success">
+                        <span>
                             <FiLogIn />
-                       </span>
-                       <strong>Cadastre um ponto de coleta</strong>
+                        </span>
+                        <strong>Cadastre um ponto de coleta</strong>
                     </Link>
-               </main> 
-                
+                </main>
+
             </div>
         </div>
     )
